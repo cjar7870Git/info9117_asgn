@@ -9,8 +9,7 @@ def before_all(ctx):
     ctx.thread.start()  # start flask app server
     ctx.browser = webdriver.Firefox()
 
-
 def after_all(ctx):
-    ctx.browser.get("{0}/shutdown".format(ctx.address)) # shut down flask app server
+    ctx.browser.get(ctx.address + "/shutdown") # shut down flask app server
     ctx.thread.join()
     ctx.browser.quit()
