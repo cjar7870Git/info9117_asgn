@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, render_template
 
 app = Flask(__name__)
 host="localhost"
@@ -35,7 +35,7 @@ def login():
         else:
             return "Fail"
     else:
-        return "login page here"
+        return render_template("login.html")
 
 
 if __name__ == '__main__':
