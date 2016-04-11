@@ -38,5 +38,19 @@ def login():
         return render_template("login.html")
 
 
+@app.route('/rego', methods=['POST', 'GET'])
+def rego():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        confirm_password = request.form['confirm_password']
+        db_passwd = users.get(username)
+        if db_passwd:
+            return "Fail"
+        else:
+            users[username] = password
+            return "Success"
+    else:
+        return render_template("rego.html")
 if __name__ == '__main__':
     serve_forever()
